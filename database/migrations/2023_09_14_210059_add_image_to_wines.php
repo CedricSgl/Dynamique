@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
+        /*
+        $columns = Schema::getColumnListing('wines');
         Schema::table('wines', function (Blueprint $table) {
             $table->string('image')->nullable();
         });
+        */
     }
 
     /**
