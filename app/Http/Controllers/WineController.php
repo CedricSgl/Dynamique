@@ -18,9 +18,20 @@ class WineController extends Controller
 {
     public function index()
     {
-
+        return Wine::with('cepage')->get();
         $wines = Wine::with('cepage')->paginate(4);
         return view('wine.index', ['wines' => $wines]);
+    }
+
+    public function home()
+    {
+        $wines = Wine::with('cepage')->paginate(4);
+        return view('wine.index', ['wines' => $wines]);
+    }
+
+    public function getAll(){
+        return Wine::with('cepage')->get();
+
     }
 
     public function create() :View

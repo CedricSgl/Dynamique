@@ -33,7 +33,7 @@ Route::prefix('/message')->name('message.')->controller(MessageController::class
 });
 
 Route::prefix('/wine')->name('wine.')->controller(WineController::class)->group(function(){
-    Route::get('/' , 'index')->name('index');
+    Route::get('/' , 'home')->name('index');
     Route::get('/new', 'create')->name('create')->middleware('auth');
     Route::post('/new', 'store');
     Route::get('/edit/{wine}', 'edit')/*->where(['id' => '[0-9]+'])*/->name('edit')->middleware('auth');
