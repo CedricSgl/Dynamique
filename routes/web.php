@@ -18,10 +18,11 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::prefix('/login')->name('login.')->controller(AuthController::class)->group(function(){
+Route::prefix('/auth')->name('auth.')->controller(AuthController::class)->group(function(){
     Route::get('/',  'login')->name('login');
     Route::post('/', 'auth');
-    Route::post('logout');
+    //Route::get('/logout')->name('logout');
+    Route::post('/logout', 'logout');
 });
 
 
@@ -41,22 +42,18 @@ Route::prefix('/wine')->name('wine.')->controller(WineController::class)->group(
 
 Route::prefix('/type')->name('type.')->group(function(){
     Route::get('/' , function(Request $request){
-        /*$type = new \App\Models\Type();
-        $type->name = 'Blanc';
-        $type->save();
-        return $type;*/
         return \App\Models\Type::all('id','name');
 
     })->name('index');
-    
+
 });
 
 Route::prefix('/cepage')->name('cepage.')->controller(CepageController::class)->group(function(){
     Route::get('/', 'index')->name('index');
-    Route::get('/new','create')->name('create');
+    Route::get('/new','create')->name('create')->middleware('auth');
     Route::post('/new', 'store');
-    Route::get('/{id}', 'show')->name('show'); // --> Update
-    
+    Route::get('/{id}', 'show')->name('show')->middleware('auth'); // --> Update
+
     /*$cepage = new \App\Models\Cepage();
     $cepage->name = '';*/
 });

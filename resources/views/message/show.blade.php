@@ -8,11 +8,11 @@
         <h5 class="card-title">Informations sur le message</h5>
         <p class="card-text">Détails du message reçu depuis le formulaire de contact.</p>
     </div></div>
-    
+
     <div class="row">
         <div class="col"></div>
         <div class="col-2"><strong>Nom complet</strong></div>
-        <div class="col-8">{{$message->id}}</div>
+        <div class="col-8">{{$message->name}}</div>
 
     </div>
     <hr>

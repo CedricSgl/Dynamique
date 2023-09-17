@@ -22,7 +22,6 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        
         DB::table('users')->insert([
             'name' => Str::random(10),
             'email' => Str::random(10).'@gmail.com',
@@ -35,7 +34,7 @@ class DatabaseSeeder extends Seeder
                 'message' => Str::random(50)
             ]);
         }
-        
+
 
 
     }

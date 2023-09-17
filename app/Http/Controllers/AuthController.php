@@ -22,4 +22,10 @@ class AuthController extends Controller
         }
         return to_route('auth.login')->withErrors(['email' => 'Somethings when wrong'])->onlyInput('email');
     }
+
+    public function logout(){
+        Auth::logout();
+        return redirect()->intended(route('auth.login'));
+    }
+
 }

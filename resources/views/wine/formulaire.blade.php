@@ -32,10 +32,10 @@
                     <option >Select one</option>
 
                     @foreach ($cepages as $cepage)
-                        <option 
+                        <option
                         @if (old('cepage_id') == $cepage->id || $wine->cepage_id == $cepage->id)
                                 {{'selected'}}
-                        @endif value="{{$cepage->id}}">{{$cepage->name}}</option>    
+                        @endif value="{{$cepage->id}}">{{$cepage->name}}</option>
                     @endforeach
                 </select>
                 @error('cepage_id')
@@ -49,7 +49,7 @@
                     @foreach ($types as $type)
                         <option @if (old('cepage_id') == $type->id || $wine->type_id == $type->id)
                             {{'selected'}}
-                    @endif value="{{$type->id}}">{{$type->name}}</option>    
+                    @endif value="{{$type->id}}">{{$type->name}}</option>
                     @endforeach
                 </select>
                 @error('type_id')
@@ -60,9 +60,17 @@
         </div>
         <div class="row">
             <div class="col m-3">
-                
                 <div class="col">
                     <label for="" class="form-label">Photo</label>
+                    <!-- a améliorer !!! -->
+                    @if ($wine->image)
+                        <br><img src="/storage/{{$wine->image}}" id="imageId" alt="" height="150px">
+                        <a name="" id="" class="btn btn-danger"  role="button" onclick="removePicture()">Supprimer l'image</a>
+                        <div class="form-check">
+                          <input class="form-check-input hidden" type="checkbox" value="true" id="removePictureId" name="removePicture">
+                        </div>
+
+                    @endif
                     <input type="file" name="image" id="" class="form-control" placeholder="" aria-describedby="helpId">
                 </div>
                 <small>
@@ -77,3 +85,9 @@
         </div>
     </form>
 </div>
+<script>
+    function removePicture(){
+        document.getElementById('imageId').remove();
+        document.getElementById('removePictureId').checked = true
+    }
+</script>

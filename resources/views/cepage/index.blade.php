@@ -2,26 +2,33 @@
 
 @section('title', $title)
 @section('content')
-    Mes Messages
     <table class="table">
         <tr>
-            <th>Nom</th>
+            <th>Cépage</th>
             <th>Date</th>
-            <th>Id</th>
+            @auth
+                <th></th>
+            @endauth
         </tr>
 
     @foreach ($cepages as $cepage)
         <tr>
             <td>{{$cepage->name}}</td>
             <td>{{$cepage->created_at}}</td>
-            <td><a href="{{route('cepage.show', ['id' => $cepage->id])}}" class="btn btn-secondary">Editer</a>
+            @auth
+            <td>
+                <a href="{{route('cepage.show', ['id' => $cepage->id])}}" class="btn btn-secondary">Editer</a>
             </td>
+            @endauth
         </tr>
 
     @endforeach
 
-    
+
 </table>
-<a href="{{route('cepage.create')}}" class="btn btn-primary">Nouveau</a>
+@auth
+    <a href="{{route('cepage.create')}}" class="btn btn-primary">Nouveau</a>
+@endauth
+
 {{$cepages->links()}}
 @endsection

@@ -12,11 +12,11 @@
 </head>
 <body>
     <header class="p-3 mb-3 border-bottom">
-        
+
         <div class="container">
           <nav class="navbar navbar-expand-md navbar-light bg-light ">
             <div class="container-fluid">
-              <a class="navbar-brand" href="#"><img src="images/logo2.png" alt="Logo" height="50px"></a>
+              <a class="navbar-brand" href="#"><img src="/images/logo2.png" alt="Logo" height="50px"></a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -33,25 +33,24 @@
                   </li>
                 </ul><div class="dropdown text-end">
                 @auth<a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                    
+
                       {{Auth::user()->name}}
-                    
+
                   </a>
                   <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
                 <!--<li><a class="dropdown-item" href="#">Profile</a></li>
                 <li><hr class="dropdown-divider"></li>-->
-                <li><form action="{{route('logout')}}" method="POST">
+                <!-- route('auth.logout')}}-->
+                <li><form action="/auth/logout" method="POST">
                   @csrf
-                  @method('delete')
-                  <button class="d-block link-dark text-decoration-none dropdown-toggle" >Se deco</button>
+
+                  <button class="d-block link-dark text-decoration-none" >Se deconnecter</button>
                 </form></li>
               </ul>@endauth
               @guest
-              
-
-              <a href="{{route('auth.login')}}" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">    
-                Se Connecter
-            </a>
+                <a href="{{route('auth.login')}}" class="d-block link-dark text-decoration-none">
+                    Se Connecter
+                </a>
               @endguest
             </div>
               </div>

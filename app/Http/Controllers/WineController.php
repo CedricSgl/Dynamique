@@ -45,8 +45,8 @@ class WineController extends Controller
     }
 
     public function update(Wine $wine, CreateWineRequest $request){
-        
-        
+
+
         $wine->update($this->transformData($wine, $request));
 
         return redirect()->route('wine.index')->with('success', 'Votre vin à bien été modifié');
@@ -62,13 +62,15 @@ class WineController extends Controller
         $datas = $request->validated();
         /** @var UploadedFile $image */
         $image = $request->validated('image');
+
+        //dd($image);
         if($image === null || $image->getError()){
             return $datas;
         }
         if($wine->image){
             Storage::disk('public')->delete($wine->image);
         }
-        $path = $image->store('wine', 'public');    
+        $path = $image->store('wine', 'public');
         $datas['image'] = $path;
         return $datas;
     }

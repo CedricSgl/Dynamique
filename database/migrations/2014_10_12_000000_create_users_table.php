@@ -24,7 +24,7 @@ return new class extends Migration
             $table->timestamps();
             $table->boolean('isAdmin')->default(false);
         });
-
+        //Make default user
         User::create([
             'name' => 'Administrator',
             'email' => 'Admin@dk.be',
