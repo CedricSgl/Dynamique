@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\WineApiController;
 use App\Http\Controllers\WineController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -14,8 +15,9 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-//Route::prefix('wine')->group(function(){});
-Route::apiResource('/wine', WineController::class);
+
+Route::get('/wine', [WineController::class, 'apiGetAll']);
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

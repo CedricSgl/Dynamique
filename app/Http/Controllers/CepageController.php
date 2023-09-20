@@ -11,20 +11,21 @@ class CepageController extends Controller
 {
     public function index(): View
     {
-        $cepages = \App\Models\Cepage::paginate(10);
+        $cepages = Cepage::paginate(10);
         return view('cepage.index', ['title' => 'Mon super titre','cepages' => $cepages]);
     }
 
-    public function show(string $id) : View
+    public function edit(string $id) : View
     {
         //TODO Use query builder for join, or change the cepage table (add customer info)
-        $cepage = \App\Models\Cepage::findOrFail($id);
-        return view('cepage.show', ['title' => 'Mon cepage','cepage' => $cepage]); // -> update
+        $cepage = Cepage::findOrFail($id);
+        return view('cepage.edit', ['title' => 'Mon cepage','cepage' => $cepage]); // -> update
         //return $cepage;
     }
 
     public function create(){
-        return view('cepage.create');
+        $cepage = new Cepage();
+        return view('cepage.create', ['cepage' => $cepage]);
     }
 
     /* Methode 1
@@ -33,7 +34,7 @@ class CepageController extends Controller
         $cepage = Cepage::create([
             'name' => $request->input('name')
         ]);
-        
+
         return redirect()->route('cepage.index');
     }
     */
@@ -42,6 +43,15 @@ class CepageController extends Controller
     public function store(CreateCepageRequest $request)
     {
         $cepage = Cepage::create($request->validated());
-        return redirect()->route('cepage.index');
+        return redirect()->route('cepage.index')->with('success', 'Votre cépage à bien été créé');
+    }
+
+    public function update(Cepage $cepage, CreateCepageRequest $request)
+    {
+
+        $datas = $request->validated();
+        $cepage->update($datas);
+
+        return redirect()->route('cepage.index')->with('success', 'Votre cépage à bien été modifié');
     }
 }

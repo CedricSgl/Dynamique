@@ -23,6 +23,12 @@ class WineController extends Controller
         return view('wine.index', ['wines' => $wines]);
     }
 
+    public function apiGetAll()
+    {
+        $all = Wine::with('cepage')->get();
+        return response()->json($all);
+    }
+
     public function home()
     {
         $wines = Wine::with('cepage')->paginate(4);

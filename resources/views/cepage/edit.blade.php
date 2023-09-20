@@ -1,6 +1,7 @@
 @extends('template')
 
-@section('title', 'Ajouter un cépage')
+@section('title', 'Editer le cépage')
 @section('content')
     @include('cepage.formulaire')
+
 @endsection

@@ -53,7 +53,8 @@ Route::prefix('/cepage')->name('cepage.')->controller(CepageController::class)->
     Route::get('/', 'index')->name('index');
     Route::get('/new','create')->name('create')->middleware('auth');
     Route::post('/new', 'store');
-    Route::get('/{id}', 'show')->name('show')->middleware('auth'); // --> Update
+    Route::get('/{id}', 'edit')->name('edit')->middleware('auth'); // --> Update
+    Route::post('/{cepage}', 'update');
 
     /*$cepage = new \App\Models\Cepage();
     $cepage->name = '';*/
