@@ -38,6 +38,7 @@ Route::prefix('/wine')->name('wine.')->controller(WineController::class)->group(
     Route::post('/new', 'store');
     Route::get('/edit/{wine}', 'edit')/*->where(['id' => '[0-9]+'])*/->name('edit')->middleware('auth');
     Route::post('/edit/{wine}', 'update');
+    Route::delete('/edit/{wine}', 'delete');
 });
 
 Route::prefix('/type')->name('type.')->group(function(){

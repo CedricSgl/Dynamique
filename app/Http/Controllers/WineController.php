@@ -55,6 +55,12 @@ class WineController extends Controller
         return view('wine.edit', $array);
     }
 
+    public function delete(Wine $wine)
+    {
+        $wine->delete();
+        return redirect()->route('wine.index')->with('success', 'Votre vin à bien été supprimé');
+    }
+
     public function update(Wine $wine, CreateWineRequest $request){
 
 
