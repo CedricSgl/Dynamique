@@ -2,8 +2,17 @@
     <form action="" method="post" enctype="multipart/form-data">
         @csrf
         <div class="card-body">
-            <h4 class="card-title">Vin</h4>
+            <div class="row">
+                <div class="col m-3">
+                <h4 class="card-title">Vin</h4>
+                </div>
             @if ($wine->id)
+            <!-- Modal trigger button -->
+            <div class="col m-3 text-end">
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalId">
+                Supprimer le vin
+            </button>
+            </div>
             <p class="card-text">Modifier les informations du vin.</p>
             @else
             <p class="card-text">Ajouter les informations du vin.</p>
@@ -83,9 +92,41 @@
                 <button type="submit" class="btn btn-primary">Sauvegarder</button>
             </div>
         </div>
+    </div>
     </form>
 </div>
+
+
+<!-- Modal Body -->
+<!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+<div class="modal fade" id="modalId" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <form action="" method="post">
+                @csrf
+                @method('delete')
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitleId">Suppresion de l'enregistrement</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Êtes-vous sûr de vouloir supprimer ce vin ?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="submit" class="btn btn-danger">Confirmer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- Optional: Place to the bottom of scripts -->
 <script>
+    const myModal = new bootstrap.Modal(document.getElementById('modalId'), options)
+
     function removePicture(){
         document.getElementById('imageId').remove();
         document.getElementById('removePictureId').checked = true

@@ -17,7 +17,7 @@
             <td>{{$cepage->created_at}}</td>
             @auth
             <td>
-                <a href="{{route('cepage.show', ['id' => $cepage->id])}}" class="btn btn-secondary">Editer</a>
+                <a href="{{route('cepage.edit', ['id' => $cepage->id])}}" class="btn btn-secondary">Editer</a>
             </td>
             @endauth
         </tr>

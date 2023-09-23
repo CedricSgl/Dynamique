@@ -48,6 +48,7 @@ Route::prefix('/wine')->name('wine.')->controller(WineController::class)->group(
     Route::post('/new', 'store');
     Route::get('/edit/{wine}', 'edit')/*->where(['id' => '[0-9]+'])*/->name('edit')->middleware('auth');
     Route::post('/edit/{wine}', 'update');
+    Route::delete('/edit/{wine}', 'delete');
 });
 
 Route::prefix('/type')->name('type.')->group(function(){
@@ -62,7 +63,8 @@ Route::prefix('/cepage')->name('cepage.')->controller(CepageController::class)->
     Route::get('/', 'index')->name('index');
     Route::get('/new','create')->name('create')->middleware('auth');
     Route::post('/new', 'store');
-    Route::get('/{id}', 'show')->name('show')->middleware('auth'); // --> Update
+    Route::get('/{id}', 'edit')->name('edit')->middleware('auth'); // --> Update
+    Route::post('/{cepage}', 'update');
 
     /*$cepage = new \App\Models\Cepage();
     $cepage->name = '';*/

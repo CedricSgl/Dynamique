@@ -1,4 +1,7 @@
 @extends('template')
+@php
+use App\Helpers\Utilities;
+@endphp
 
 @section('title', 'Gestion des Vins')
 @section('content')
@@ -25,7 +28,7 @@
                     @endif
                 </div>
                 <div class="col"><h5>{{$wine->name}}</h5><br>{{$wine->cepage->name}}</div>
-                <div class="col text-end"><h5>{{$wine->vintage}}</h5><br>{{$wine->updated_at}}</div>
+                <div class="col text-end"><h5>{{$wine->vintage}}</h5><br>{{Utilities::getUpdateTimeDiff($wine->updated_at)}}</div>
                 @auth
                 <div class="col-1 text-center"><a name="" id="" class="btn btn-primary" href="{{route('wine.edit', ['wine' => $wine->id])}}" role="button">Editer</a></div>
                 @endauth
@@ -50,4 +53,21 @@
 </div>
 
 @endif
+<script>
+    function chargerDonnees() {
+      // Chargez les données depuis l'URL spécifiée
+      fetch("http://dynamique.test/api/wine")
+        .then((response) => {
+          // Si la requête a réussi
+          if (response.status === 200) {
+            // Traitez la réponse
+            return response.json();
+          }
+        })
+        .then((donnees) => {
+          // Afficher les données dans la console
+          console.log(donnees);
+        });
+    }
+</script>
 @endsection

@@ -23,6 +23,12 @@ class WineController extends Controller
         return view('wine.index', ['wines' => $wines]);
     }
 
+    public function apiGetAll()
+    {
+        $all = Wine::with('cepage')->get();
+        return response()->json($all);
+    }
+
     public function home()
     {
         $wines = Wine::with('cepage')->paginate(4);
@@ -53,6 +59,12 @@ class WineController extends Controller
         $array = $this->allSelect();
         $array['wine'] = $wine;
         return view('wine.edit', $array);
+    }
+
+    public function delete(Wine $wine)
+    {
+        $wine->delete();
+        return redirect()->route('wine.index')->with('success', 'Votre vin à bien été supprimé');
     }
 
     public function update(Wine $wine, CreateWineRequest $request){
