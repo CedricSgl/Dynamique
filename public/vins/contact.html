@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/style.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Monsieur+La+Doulaise">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <section class="image banner"><a href="index.html"><img src="img/image3a.jpg" alt="Deconinck Index" class="img-center"></a></section>
+    </header>
+    <main>
+        <nav>
+            <span><a href="nos-classiques.html">Nos Classiques</a></span>
+            <span><a href="contact.html">Contact</a></span>
+            <span><a href="plan.html">Plan d'accès</a></span>
+        </nav>
+        <div class="container">
+            <div class="divBox"><span class="title"><strong>Contact</strong></span>
+                <form action="#" id="messageForm">
+                    <input type="hidden" name="_token" id="csrf-token" value="">
+                    <div class="box">
+                        <h2>Vos coordonnées</h2>
+                        <div class="form-container">
+                            <div class="input-group">
+                                <label for="name">Nom :</label>
+                                <input type="text" name="name" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="firstName">Prénom :</label>
+                                <input type="text" name="firstName" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="phone">Téléphone :</label>
+                                <input type="text" name="phone" id="phoneId">
+                            </div>
+                            <div class="input-group">
+                                <label for="email">Mail :</label>
+                                <input type="text" name="email" id="mailId" placeholder="mail@domain.com">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <h2>Votre Question</h2>
+                        <textarea name="question" id="questionId" cols="80" rows="5"></textarea>
+                    </div>
+                    <div class="box" hidden id="message"></div>
+                    <button type="submit" class="submit">Envoyer</button>
+                </form>
+            </div>
+        </div>
+        
+    </main>
+    <footer>
+
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                type: 'GET',
+                url: '/message/csrf-token-endpoint', 
+                success: function (data) {
+                    $('#csrf-token').val(data.token);
+                },
+                error: function (xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        
+            $('#messageForm').submit(function (e) {
+                e.preventDefault();
+        
+                var formData = new FormData(this);
+                $.ajax({
+                    type: 'POST',
+                    url: '/message/post',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+                        $('#messageForm')[0].reset()
+                        $('#message').removeAttr('hidden').html(data.message)
+                        console.log(data);
+                    },
+                    error: function (xhr, status, error) {
+                        console.error(error);
+                    }
+                });
+            });
+        }); 
+    </script>
+</body>
+</html>

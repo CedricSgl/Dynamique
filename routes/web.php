@@ -30,6 +30,16 @@ Route::prefix('/message')->name('message.')->controller(MessageController::class
     Route::get('/' , 'index')->name('index');
     Route::get('/new', 'create')->name('create');
     Route::get('/{id}', 'show')->where(['id' => '[0-9]+'])->name('show');
+    Route::get('/csrf-token-endpoint', function () {
+        return response()->json(['token' => csrf_token()]);
+    });
+    Route::post('/post', [MessageController::class, 'store']);
+});
+
+Route::post('/post', [MessageController::class, 'store']);
+
+Route::get('/csrf-token-endpoint', function () {
+    //return response()->json(['token' => csrf_token()]);
 });
 
 Route::prefix('/wine')->name('wine.')->controller(WineController::class)->group(function(){

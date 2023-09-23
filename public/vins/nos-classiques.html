@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/style.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Monsieur+La+Doulaise">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <section class="image banner"><a href="index.html"><img src="img/image3a.jpg" alt="Deconinck Index" class="img-center"></a></section>
+    </header>
+    <main>
+        <nav>
+            <span><a href="nos-classiques.html">Nos Classiques</a></span>
+            <span><a href="contact.html">Contact</a></span>
+            <span><a href="plan.html">Plan d'accès</a></span>
+        </nav>
+        <div class="container">
+            <div class="divBox"><span class="title"><strong>Nos classiques</strong></span>
+                <div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Felis eget nunc lobortis mattis. Viverra aliquet eget sit amet tellus cras adipiscing. Tortor condimentum lacinia quis vel eros. Lorem ipsum dolor sit amet consectetur adipiscing elit duis tristique. Est ante in nibh mauris cursus mattis molestie a iaculis. Mattis rhoncus urna neque viverra justo nec ultrices. Vivamus arcu felis bibendum ut tristique et egestas. Egestas quis ipsum suspendisse ultrices. Ultricies lacus sed turpis tincidunt id aliquet risus feugiat in.</p>
+                </div>
+                <div id="target"></div>
+                
+            </div>
+            
+
+
+        </div>
+        
+    </main>
+    <footer>
+
+    </footer>
+    <script>
+        (function getWines() {
+          // Chargez les données depuis l'URL spécifiée
+          fetch("http://dynamique.test/api/wine")
+            .then((response) => {
+                
+              // Si la requête a réussi
+              if (response.status === 200) {
+                // Traitez la réponse
+                return response.json();
+              }
+            })
+            .then((donnees) => {
+              // Afficher les données dans la console
+              //console.log(donnees);
+              buffer = ''
+                for(const element of donnees)
+                {
+                    buffer += '<div class="wineCard2"><div class="divImg">'
+                    if(null != element.image){
+                        buffer += '<img src="../../storage/' + element.image + '" alt="' + element.name + '">'
+                    }else{
+                        //No Image
+                    }
+                    buffer += '</div><div class="text"><span class ="uppercase">' + element.name + '</span><br>' + element.cepage.name + '</div>'
+                    buffer += '</div>'
+                }
+                let element = document.getElementById('target');
+                element.innerHTML = buffer;
+                console.log(buffer)
+                return buffer;
+            }).catch((error) => {
+                return '<div class="wineCard2">Toutes nos excuses.<br>Une erreur c\'est produite pendant le chargement des vins.<br>Merci de réésayer ultérieurement.</div>'
+            });
+        })();
+        
+      </script>
+</body>
+</html>

@@ -23,7 +23,22 @@ class MessageController extends Controller
         //return $message;
     }
 
-    public function create(){
-        return view('message.create');
+    public function store(Request $request)
+    {
+        
+        $name = $request->input('name') . ' ' . $request->input('firstName');
+        $question = $request->input('question');
+        $phone = $request->input('phone');
+        $email = $request->input('email');
+
+        $message = new Message();
+        $message->name = $name;
+        $message->message = $question;
+        $message->phone = $phone;
+        $message->email = $email;
+        $message->save();
+        return response()->json([
+            'message' => 'Merci pour votre message, <br>nous le traiterons le plus rapidement possible et, le cas échéant, reviendrons vers vous.',
+        ]);
     }
 }
