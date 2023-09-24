@@ -24,7 +24,8 @@ use App\Helpers\Utilities;
             <div class="row justify-content-center align-items-center g-2">
                 <div class="col-2 text-center">
                     @if ($wine->image)
-                    <img src="storage/{{$wine->image}}" alt="" height="150px">
+                    
+                    <img src="/storage/{{$wine->image}}" alt="{{$wine->image}}" height="150px">
                     @endif
                 </div>
                 <div class="col"><h5>{{$wine->name}}</h5><br>{{$wine->cepage->name}}</div>
@@ -56,7 +57,7 @@ use App\Helpers\Utilities;
 <script>
     function chargerDonnees() {
       // Chargez les données depuis l'URL spécifiée
-      fetch("http://dynamique.test/api/wine")
+      fetch("/api/wine")
         .then((response) => {
           // Si la requête a réussi
           if (response.status === 200) {
