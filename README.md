@@ -10,7 +10,7 @@
 
 ## About This Project
 
-Pour installer ce projet, merci de suivre les instructions suivante et dans l'ordre.
+Pour installer ce projet, merci de suivre les instructions suivante dans l'ordre.
 Les prérequis sont les suivants : 
 - PHP 8 installé et configuré
 - MySQL ou MariaDB installé et configuré
