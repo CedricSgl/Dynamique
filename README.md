@@ -17,7 +17,7 @@ Les prérequis sont les suivants :
 - Composer installé
 - Avoir un serveur apache est une facilité.
 
-Mise en place du projet
+### Mise en place du projet
 - Dans un terminal, sur le root de votre serveur web exécuté la commande : git clone https://github.com/CedricSgl/Dynamique.git
 - Rendez vous dans le dossier créé.
 - Créé, si ce n'est déja fait, une DB qui accueillera le projet. (Laravel peut également s'en charger plus tard)
