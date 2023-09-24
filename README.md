@@ -1,4 +1,4 @@
-<h1>Dynamique !</h1>
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
@@ -7,6 +7,27 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
+
+## About This Project
+
+Pour installer ce projet, merci de suivre les instructions suivante et dans l'ordre.
+Les prérequis sont les suivants : 
+- PHP 8 installé et configuré
+- MySQL ou MariaDB installé et configuré
+- Composer installé
+- Avoir un serveur apache est une facilité.
+
+Mise en place du projet
+- Dans un terminal, sur le root de votre serveur web exécuté la commande : git clone https://github.com/CedricSgl/Dynamique.git
+- Rendez vous dans le dossier créé.
+- Créé, si ce n'est déja fait, une DB qui accueillera le projet. (Laravel peut également s'en charger plus tard)
+- Exécuté la commande : composer install
+- copié et renomé le fichier .env.example en .env
+- édité le fichier .env, remplisé vos données de connexion, et vos données sur l'application. Ensuite sauvegardé
+- Laravel a besoin d'une APP_KEY, deux possibilité s'offre à vous : exécuté la commande : php artisan key:generate ou lors de la première exécution, générer la clé via l'interface web.
+- exécuté la commande : php artisan storage:link. Dans le cas de cet exemple, il est important de la faire avant le remplisage de la base de données car les photos des vins doivent être copié dans le storage.
+
+
 
 ## About Laravel
 
