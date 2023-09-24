@@ -9,7 +9,7 @@ use App\Helpers\Utilities;
 <div class="row">
     <div class="col"><h3>Vins</h3></div>
     @auth
-        <div class="col text-end"><a name="" id="" class="btn btn-danger" href="{{route('wine.create')}}" role="button">Ajouter un vin</a></div>
+        <div class="col text-end"><a name="" id="" class="btn btn-danger" href="{{route('administrator.wine.create')}}" role="button">Ajouter un vin</a></div>
     @endauth
 
 </div>
@@ -30,7 +30,7 @@ use App\Helpers\Utilities;
                 <div class="col"><h5>{{$wine->name}}</h5><br>{{$wine->cepage->name}}</div>
                 <div class="col text-end"><h5>{{$wine->vintage}}</h5><br>{{Utilities::getUpdateTimeDiff($wine->updated_at)}}</div>
                 @auth
-                <div class="col-1 text-center"><a name="" id="" class="btn btn-primary" href="{{route('wine.edit', ['wine' => $wine->id])}}" role="button">Editer</a></div>
+                <div class="col-1 text-center"><a name="" id="" class="btn btn-primary" href="{{route('administrator.wine.edit', ['wine' => $wine->id])}}" role="button">Editer</a></div>
                 @endauth
             </div>
         </li>

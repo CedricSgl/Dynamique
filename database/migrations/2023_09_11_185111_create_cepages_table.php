@@ -17,13 +17,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('name');
         });
-        Cepage::create(['name' => 'Vino Nobile di Montepulciano']);
-        Cepage::create(['name' => 'Salice Salentino']);
-        Cepage::create(['name' => 'Bordeaux']);
-        Cepage::create(['name' => 'Toro']);
-        Cepage::create(['name' => 'non']);
-        Cepage::create(['name' => 'Colchagua Valley']);
-        Cepage::create(['name' => 'Maipo Valley']);
+
     }
 
     /**

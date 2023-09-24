@@ -24,13 +24,13 @@
               <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
                   <li class="nav-item">
-                    <a @class(['nav-link', 'active' => str_starts_with($route, 'wine.')]) href="/wine">Vins</a>
+                    <a @class(['nav-link', 'active' => str_starts_with($route, 'administrator.wine.')]) href="/administrator/wine">Vins</a>
                   </li>
                   <li class="nav-item">
-                    <a @class(['nav-link', 'active' => str_starts_with($route,'cepage.')]) href="/cepage">Cépages</a>
+                    <a @class(['nav-link', 'active' => str_starts_with($route,'administrator.cepage.')]) href="/administrator/cepage">Cépages</a>
                   </li>
                   <li class="nav-item">
-                    <a @class(['nav-link', 'active' => str_starts_with($route,'message.')]) href="/message">Messages</a>
+                    <a @class(['nav-link', 'active' => str_starts_with($route,'message.')]) href="/administrator/message">Messages</a>
                   </li>
                 </ul><div class="dropdown text-end">
                 @auth<a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">

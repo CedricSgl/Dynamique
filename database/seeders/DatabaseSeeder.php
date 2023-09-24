@@ -22,18 +22,18 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        DB::table('users')->insert([
+        /*DB::table('users')->insert([
             'name' => Str::random(10),
             'email' => Str::random(10).'@gmail.com',
             'phone' => 0,
             'password' => Hash::make('password'),
+        ]);*/
+        
+        $this->call([
+            MessageSeeder::class,
+            CepageSeeder::class,
+            UserSeeder::class
         ]);
-        for($i = 0; $i < 10; $i++){
-            DB::table('messages')->insert([
-                'user_id' => random_int(1,10),
-                'message' => Str::random(50)
-            ]);
-        }
 
 
 

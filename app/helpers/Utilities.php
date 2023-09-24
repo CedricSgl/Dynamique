@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Date;
 
 class Utilities
 {
-    public static function getUpdateTimeDiff($updateTime)
+    public static function getUpdateTimeDiff($updateTime, $verb = 'modifié')
     {
         $currentDateTime = Date::now();
         //$updateTime = Date::createFromTimestamp($updateTime);
@@ -23,21 +23,22 @@ class Utilities
 
         $output = '';
         if($year > 0){
+            if($year == 1){
+                $output .= $verb . ' il y a ' . $year . ' an';
+            }else{
+                $output .= $verb . ' il y a ' . $year . ' ans';
+            }
 
         }elseif($month > 0){
-            $output .= 'modifié il y a ' . $month . ' mois';
+            $output .= $verb . ' il y a ' . $month . ' mois';
         }elseif ($days > 0) {
-            $output .= 'modifié il y a ' . $days . ' jours';
+            $output .= $verb . ' il y a ' . $days . ' jours';
         }elseif ($hours > 0) {
-            $output .= 'modifié il y a ' . $hours . ' heures';
+            $output .= $verb . ' il y a ' . $hours . ' heures';
         }elseif ($minutes > 0) {
-            $output .= 'modifié il y a ' . $minutes . ' minutes';
+            $output .= $verb . ' il y a ' . $minutes . ' minutes';
         }   else {
-            $output .= 'modifié juste maintenant';
-        }
-
-        if ($minutes <= 1) {
-            $output = 'modifié il y a quelques secondes';
+            $output .= $verb . ' il y a quelques instant';
         }
 
         return $output;

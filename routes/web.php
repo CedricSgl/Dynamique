@@ -18,6 +18,49 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::prefix('/administrator')->name('administrator.')->middleware('auth')->group(function(){
+    Route::prefix('/auth')->name('auth.')->controller(AuthController::class)->group(function(){
+        Route::get('/',  'login')->name('login');
+        Route::post('/', 'auth');
+        //Route::get('/logout')->name('logout');
+        Route::post('/logout', 'logout');
+    });
+    Route::prefix('/message')->name('message.')->controller(MessageController::class)->group(function(){
+        Route::get('/' , 'index')->name('index');
+        Route::get('/new', 'create')->name('create');
+        Route::get('/{id}', 'show')->where(['id' => '[0-9]+'])->name('show');
+        Route::get('/csrf-token-endpoint', function () {
+            return response()->json(['token' => csrf_token()]);
+        });
+        Route::post('/post', [MessageController::class, 'store']);
+    });
+
+
+    Route::prefix('/cepage')->name('cepage.')->controller(CepageController::class)->group(function(){
+        Route::get('/', 'index')->name('index');
+        Route::get('/new','create')->name('create')->middleware('auth');
+        Route::post('/new', 'store');
+        Route::get('/{id}', 'edit')->name('edit')->middleware('auth'); // --> Update
+        Route::post('/{cepage}', 'update');
+    });
+    Route::prefix('/wine')->name('wine.')->controller(WineController::class)->group(function(){
+        Route::get('/' , 'home')->name('index');
+        Route::get('/new', 'create')->name('create')->middleware('auth');
+        Route::post('/new', 'store');
+        Route::get('/edit/{wine}', 'edit')/*->where(['id' => '[0-9]+'])*/->name('edit')->middleware('auth');
+        Route::post('/edit/{wine}', 'update');
+        Route::delete('/edit/{wine}', 'delete');
+    });
+});
+
+/*Route::middleware(['auth'])->group(function(){
+    Route::prefix('/message')->name('message.')->controller(MessageController::class)->group(function(){
+        Route::get('/' , 'index')->name('index');
+    });
+});*/
+
+
+/*BEFORE MOVE*/
 Route::prefix('/auth')->name('auth.')->controller(AuthController::class)->group(function(){
     Route::get('/',  'login')->name('login');
     Route::post('/', 'auth');
@@ -26,7 +69,7 @@ Route::prefix('/auth')->name('auth.')->controller(AuthController::class)->group(
 });
 
 
-Route::prefix('/message')->name('message.')->controller(MessageController::class)->group(function(){
+/*Route::prefix('/message')->name('message.')->controller(MessageController::class)->group(function(){
     Route::get('/' , 'index')->name('index');
     Route::get('/new', 'create')->name('create');
     Route::get('/{id}', 'show')->where(['id' => '[0-9]+'])->name('show');
@@ -34,22 +77,22 @@ Route::prefix('/message')->name('message.')->controller(MessageController::class
         return response()->json(['token' => csrf_token()]);
     });
     Route::post('/post', [MessageController::class, 'store']);
-});
+});*/
 
 Route::post('/post', [MessageController::class, 'store']);
 
 Route::get('/csrf-token-endpoint', function () {
     //return response()->json(['token' => csrf_token()]);
 });
-
+/*
 Route::prefix('/wine')->name('wine.')->controller(WineController::class)->group(function(){
     Route::get('/' , 'home')->name('index');
     Route::get('/new', 'create')->name('create')->middleware('auth');
     Route::post('/new', 'store');
-    Route::get('/edit/{wine}', 'edit')/*->where(['id' => '[0-9]+'])*/->name('edit')->middleware('auth');
+    Route::get('/edit/{wine}', 'edit')/*->where(['id' => '[0-9]+'])*//*->name('edit')->middleware('auth');
     Route::post('/edit/{wine}', 'update');
     Route::delete('/edit/{wine}', 'delete');
-});
+});*/
 
 Route::prefix('/type')->name('type.')->group(function(){
     Route::get('/' , function(Request $request){
@@ -58,17 +101,14 @@ Route::prefix('/type')->name('type.')->group(function(){
     })->name('index');
 
 });
-
+/*
 Route::prefix('/cepage')->name('cepage.')->controller(CepageController::class)->group(function(){
     Route::get('/', 'index')->name('index');
     Route::get('/new','create')->name('create')->middleware('auth');
     Route::post('/new', 'store');
     Route::get('/{id}', 'edit')->name('edit')->middleware('auth'); // --> Update
     Route::post('/{cepage}', 'update');
-
-    /*$cepage = new \App\Models\Cepage();
-    $cepage->name = '';*/
-});
+});*/
 
 Route::get('/', function () {
     return view('welcome');

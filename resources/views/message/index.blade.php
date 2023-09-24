@@ -1,4 +1,7 @@
 @extends('template')
+@php
+use App\Helpers\Utilities;
+@endphp
 
 @section('title', $title)
 @section('content')
@@ -8,13 +11,13 @@
             <th>Nom</th>
             <th>Date</th>
             <th>Message</th>
-            <th>Id</th>
+            <th>Détail</th>
         </tr>
 
     @forelse  ($messages as $message)
         <tr>
             <td>{{$message->name}}</td>
-            <td>{{$message->created_at}}</td>
+            <td>{{Utilities::getUpdateTimeDiff($message->created_at, 'reçu')}}</td>
             <td ><span class="d-inline-block text-truncate" style="max-width: 300px;">{{ $message->message}}</span></td>
             <td><a href="{{route('message.show', ['id' => $message->id])}}" class="btn btn-secondary">Lire</a>
             </td>

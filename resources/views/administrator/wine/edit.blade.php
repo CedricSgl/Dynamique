@@ -3,7 +3,7 @@
 @section('title', 'Modifier le vin')
 @section('content')
 
-@include('wine.formulaire')
+@include('administrator.wine.formulaire')
 
 
 

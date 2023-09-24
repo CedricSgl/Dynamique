@@ -2,6 +2,6 @@
 
 @section('title', 'Editer le cépage')
 @section('content')
-    @include('cepage.formulaire')
+    @include('administrator.cepage.formulaire')
 
 @endsection

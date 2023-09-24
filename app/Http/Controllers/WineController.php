@@ -20,7 +20,7 @@ class WineController extends Controller
     {
         return Wine::with('cepage')->get();
         $wines = Wine::with('cepage')->paginate(4);
-        return view('wine.index', ['wines' => $wines]);
+        return view('administrator.wine.index', ['wines' => $wines]);
     }
 
     public function apiGetAll()
@@ -32,7 +32,7 @@ class WineController extends Controller
     public function home()
     {
         $wines = Wine::with('cepage')->paginate(4);
-        return view('wine.index', ['wines' => $wines]);
+        return view('administrator.wine.index', ['wines' => $wines]);
     }
 
     public function getAll(){
@@ -45,12 +45,12 @@ class WineController extends Controller
         $wine = new Wine();
         $array = $this->allSelect();
         $array['wine'] = $wine;
-        return view('wine.create', $array);
+        return view('administrator.wine.create', $array);
     }
 
     public function store(CreateWineRequest $request){
         $wine = Wine::create($this->transformData(new Wine(), $request));
-        return redirect()->route('wine.index')->with('success', 'Votre vin à bien été ajouté');
+        return redirect()->route('administrator.wine.index')->with('success', 'Votre vin à bien été ajouté');
     }
 
     public function edit(Wine $wine/*string $id*/) :View
@@ -58,13 +58,13 @@ class WineController extends Controller
         //$wine = \App\Models\Wine::findOrFail($id);
         $array = $this->allSelect();
         $array['wine'] = $wine;
-        return view('wine.edit', $array);
+        return view('administrator.wine.edit', $array);
     }
 
     public function delete(Wine $wine)
     {
         $wine->delete();
-        return redirect()->route('wine.index')->with('success', 'Votre vin à bien été supprimé');
+        return redirect()->route('administrator.wine.index')->with('success', 'Votre vin à bien été supprimé');
     }
 
     public function update(Wine $wine, CreateWineRequest $request){
@@ -72,7 +72,7 @@ class WineController extends Controller
 
         $wine->update($this->transformData($wine, $request));
 
-        return redirect()->route('wine.index')->with('success', 'Votre vin à bien été modifié');
+        return redirect()->route('administrator.wine.index')->with('success', 'Votre vin à bien été modifié');
     }
 
     public function allSelect(){
