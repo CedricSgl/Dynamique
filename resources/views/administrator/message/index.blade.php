@@ -19,7 +19,7 @@ use App\Helpers\Utilities;
             <td>{{$message->name}}</td>
             <td>{{Utilities::getUpdateTimeDiff($message->created_at, 'reçu')}}</td>
             <td ><span class="d-inline-block text-truncate" style="max-width: 300px;">{{ $message->message}}</span></td>
-            <td><a href="{{route('message.show', ['id' => $message->id])}}" class="btn btn-secondary">Lire</a>
+            <td><a href="{{route('administrator.message.show', ['id' => $message->id])}}" class="btn btn-secondary">Lire</a>
             </td>
         </tr>
     @empty

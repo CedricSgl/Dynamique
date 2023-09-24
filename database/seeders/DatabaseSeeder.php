@@ -32,7 +32,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             MessageSeeder::class,
             CepageSeeder::class,
-            UserSeeder::class
+            UserSeeder::class,
+            WineSeeder::class
         ]);
 
 

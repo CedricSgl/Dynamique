@@ -69,15 +69,12 @@ Route::prefix('/auth')->name('auth.')->controller(AuthController::class)->group(
 });
 
 
-/*Route::prefix('/message')->name('message.')->controller(MessageController::class)->group(function(){
-    Route::get('/' , 'index')->name('index');
-    Route::get('/new', 'create')->name('create');
-    Route::get('/{id}', 'show')->where(['id' => '[0-9]+'])->name('show');
+Route::prefix('/message')->name('message.')->controller(MessageController::class)->group(function(){
     Route::get('/csrf-token-endpoint', function () {
         return response()->json(['token' => csrf_token()]);
     });
     Route::post('/post', [MessageController::class, 'store']);
-});*/
+});
 
 Route::post('/post', [MessageController::class, 'store']);
 

@@ -55,7 +55,6 @@ class WineController extends Controller
 
     public function edit(Wine $wine/*string $id*/) :View
     {
-        //$wine = \App\Models\Wine::findOrFail($id);
         $array = $this->allSelect();
         $array['wine'] = $wine;
         return view('administrator.wine.edit', $array);

@@ -13,13 +13,13 @@ class MessageController extends Controller
     public function index(): View
     {
         $messages = Message::orderBy('created_at', 'desc')->paginate(10);
-        return view('message.index', ['title' => 'Mes Messages','messages' => $messages]);
+        return view('administrator.message.index', ['title' => 'Mes Messages','messages' => $messages]);
     }
 
     public function show(string $id) : View
     {
         $message = Message::findOrFail($id);
-        return view('message.show', ['title' => 'Mon message','message' => $message]);
+        return view('administrator.message.show', ['title' => 'Mon message','message' => $message]);
     }
 
     public function store(/*Request $request*/MessageRequest $request )
