@@ -36,7 +36,7 @@ Les prérequis sont les suivants :
 - rendez-vous sur l'addresse <url>/administrator (http://localhost/administrator)
 - Le login devrait être remplis automatiquement : Admin@dk.be
 - Password 1234
--tester l'application
+- Tester l'application
 
 
 
