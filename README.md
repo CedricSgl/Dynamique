@@ -29,11 +29,11 @@ Les prérequis sont les suivants :
     - php artisan storage:link. Dans le cas de cet exemple, il est important de la faire avant le remplisage (seed) de la base de données car les photos des vins doivent être copié dans le storage.
     - php artisan migrate
     - php artisan db:seed
-- Executer le serveur : soit via apache, soit via la commande : php artisan serve (le port par défaut peut être changer dans le fichier .env en ajoutant la ligne : SERVER_PORT=<VotrePort>)
+- Executer le serveur : soit via apache, soit via la commande : php artisan serve (le port par défaut (8000) peut être changer dans le fichier .env en ajoutant la ligne : SERVER_PORT=<VotrePort>)
 
 ### Connection a l'interface d'administration.
 
-- rendez-vous sur l'addresse <url>/administrator (http://localhost/administrator)
+- rendez-vous sur l'addresse <url>/administrator (http://localhost:8000/administrator)
 - Le login devrait être remplis automatiquement : Admin@dk.be
 - Password 1234
 - Tester l'application
