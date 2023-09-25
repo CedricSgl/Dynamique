@@ -18,20 +18,18 @@ Les prérequis sont les suivants :
 - Avoir un serveur apache est une facilité.
 
 ### Mise en place du projet
-- Dans un terminal, sur le root de votre serveur web exécuté la commande : git clone https://github.com/CedricSgl/Dynamique.git
+- Dans un terminal, sur le root de votre serveur web exécuté la commande : git clone https://github.com/CedricSgl/Dynamique.git, pour cloner le repository github
 - Rendez vous dans le dossier créé.
-- Créé, si ce n'est déja fait, une DB qui accueillera le projet. (Laravel peut également s'en charger plus tard)
+- Créé, si ce n'est déja fait, une DB qui accueillera le projet. (Laravel peut également s'en charger plus tard si l'utilisateur configuré dans le fichier de config a assez de droit.)
 - Exécuté la commande : composer install
 - copié et renomé le fichier .env.example en .env
 - édité le fichier .env, remplisé vos données de connexion, et vos données sur l'application. Ensuite sauvegardé
 - Laravel a besoin d'une APP_KEY, deux possibilité s'offre à vous : exécuté la commande : php artisan key:generate ou lors de la première exécution, générer la clé via l'interface web.
 - exécuté les commandes : 
-- php artisan storage:link. Dans le cas de cet exemple, il est important de la faire avant le remplisage de la base de données car les photos des vins doivent être copié dans le storage.
-- php artisan migrate
-- php artisan db:seed
+    - php artisan storage:link. Dans le cas de cet exemple, il est important de la faire avant le remplisage (seed) de la base de données car les photos des vins doivent être copié dans le storage.
+    - php artisan migrate
+    - php artisan db:seed
 - Executer le serveur : soit via apache, soit via la commande : php artisan serve (le port par défaut peut être changer dans le fichier .env en ajoutant la ligne : SERVER_PORT=<VotrePort>)
-
-
 
 ### Connection a l'interface d'administration.
 
