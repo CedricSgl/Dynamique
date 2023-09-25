@@ -17,7 +17,7 @@
         <div class="container">
           <nav class="navbar navbar-expand-md navbar-light bg-light ">
             <div class="container-fluid">
-              <a class="navbar-brand" href="/vins"><img src="/images/logo2.png" alt="Logo" height="50px"></a>
+              <a class="navbar-brand" href="/"><img src="/images/logo2.png" alt="Logo" height="50px"></a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -30,7 +30,7 @@
                     <a @class(['nav-link', 'active' => str_starts_with($route,'administrator.cepage.')]) href="/administrator/cepage">Cépages</a>
                   </li>
                   <li class="nav-item">
-                    <a @class(['nav-link', 'active' => str_starts_with($route,'message.')]) href="/administrator/message">Messages</a>
+                    <a @class(['nav-link', 'active' => str_starts_with($route,'administrator.message.')]) href="/administrator/message">Messages</a>
                   </li>
                 </ul><div class="dropdown text-end">
                 @auth<a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">

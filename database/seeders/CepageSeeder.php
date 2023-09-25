@@ -13,7 +13,7 @@ class CepageSeeder extends Seeder
      */
     public function run(): void
     {
-        //Cepage::create(['name' => 'Vino Nobile di Montepulciano']);
+        Cepage::create(['name' => 'Vino Nobile di Montepulciano']);
         Cepage::create(['name' => 'Salice Salentino']);
         Cepage::create(['name' => 'Bordeaux']);
         Cepage::create(['name' => 'Toro']);
