@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateCepageRequest extends FormRequest
@@ -22,7 +23,7 @@ class CreateCepageRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'min:3', 'unique:cepages']
+            'name' => ['required', 'min:3', Rule::unique('cepages')->ignore($this->route()->parameter('cepage'))]
         ];
     }
 

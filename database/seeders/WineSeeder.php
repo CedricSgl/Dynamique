@@ -4,7 +4,10 @@ namespace Database\Seeders;
 
 use App\Models\Wine;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\File;
+
 use Illuminate\Support\Facades\Storage;
+use function PHPUnit\Framework\directoryExists;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class WineSeeder extends Seeder
@@ -76,8 +79,16 @@ class WineSeeder extends Seeder
     }
 
     public static function copyFile($file){
-        $sourcePath = public_path("/images/$file");
-        $destinationPath = storage_path("app/public/wine/$file");
-        if (file_exists($sourcePath)) {if (copy($sourcePath, $destinationPath)) { }}
+        $storagePath = storage_path("app\public\wine");
+        if(!File::isDirectory($storagePath)){
+            File::makeDirectory($storagePath, 0777, true, true);
+        }
+        $sourcePath = public_path("\images\\$file");
+        $destinationPath = storage_path("app\public\wine\\".$file);
+        if (file_exists($sourcePath)) {
+            if (copy($sourcePath, $destinationPath)) {
+
+            }
+        }
     }
 }

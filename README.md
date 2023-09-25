@@ -33,10 +33,12 @@ Les prérequis sont les suivants :
 
 ### Connection a l'interface d'administration.
 
-- rendez-vous sur l'addresse <url>/administrator (http://localhost:8000/administrator)
+- rendez-vous sur l'addresse <url>/administrator (http://127.0.0.1:8000/administrator)
 - Le login devrait être remplis automatiquement : Admin@dk.be
 - Password 1234
 - Tester l'application
+- La partie statique est joignable a partir de l'adresse : http://127.0.0.1:8000/ ou http://127.0.0.1:8000/vins/index.html
+J'ai pris le parti de ne pas la transformer en Laravel / blade, pour vraiment garder se coté statique et indépendant. La partie statique pourrait être déployée "n'importe ou à partir du moment ou les URLs ajax seraient mise à jours.
 
 
 
